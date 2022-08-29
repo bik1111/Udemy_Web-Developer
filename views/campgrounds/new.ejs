@@ -1,0 +1,112 @@
+<% layout('layouts/boilerplate')%>
+<div class="row">
+  <h1 class="text-center">New Campground</h1>
+  <!-- 열의 절반을 차지하되 왼쪽으로 쏠리지 않고 가운데로 오게끔 3만큼 ㅇffset 시키는것.-->
+  <div class="col-md-6 offset-md-3">
+    <!-- 해당 제출 폼의 클래스와 JS에서 불러오는 클래스명이 동일해야함.-->
+    <!-- 또한 폼의 모든 인풋들이 'required'로 맞쳐줘야 필수로 입력하라는 문구 나옴.-->
+            <form
+          action="/campgrounds"
+          method="POST"
+          novalidate
+          class="validated-form"
+          enctype="multipart/form-data"
+        >
+          <!-- mb-3 : css 파일을 따로 만드는것보다 부트스트랩 클래스를 이용하는것이 더 효율적-->
+          <div class="mb-3">
+            <label class="form-label" for="title">Title</label>
+            <!-- campground[title]처럼 중괄호사이에 이름이나 위치등을 넣으면 데이터가 POST 요쳥을 해서 
+          Express 앱을 지나 서버로 갈 때 <body>에 포함된게 campground라고 정렬됨.
+              콘텐츠를 그룹화 할 수 있는 좋은 방법.-->
+            <input
+              class="form-control"
+              type="text"
+              id="title"
+              name="campground[title]"
+              required
+            />
+            <!-- 올바른 입력을 했을 때 Looks good!이 뜨게 만듦.-->
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="location">Location</label>
+            <input
+              class="form-control"
+              type="text"
+              id="location"
+              name="campground[location]]"
+              required
+            />
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+          <!-- <div class="mb-3">
+        <label class="form-label" for="image">Image URL</label>
+        <!-- campground[title]처럼 중괄호사이에 이름이나 위치등을 넣으면 데이터가 POST 요쳥을 해서 
+          Express 앱을 지나 서버로 갈 때 <body>에 포함된게 campground라고 정렬됨.
+              콘텐츠를 그룹화 할 수 있는 좋은 방법.
+        <input
+          class="form-control"
+          type="text"
+          id="image"
+          name="campground[image]"
+          required/>  
+        <div class="valid-feedback">Looks good!</div>
+      </div> -->
+          <div class="mb-3">
+            <label class="form-label" for="price">Campground Price</label>
+            <div class="input-group">
+              <span class="input-group-text">$</span>
+              <input
+                type="text"
+                class="form-control"
+                aria-label="price"
+                id="price"
+                placeholder="0"
+                name="campground[price]"
+                required
+              />
+              <span class="input-group-text">.00</span>
+              <div class="valid-feedback">Looks good!</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="description">Description</label>
+            <!-- campground[title]처럼 중괄호사이에 이름이나 위치등을 넣으면 데이터가 POST 요쳥을 해서 
+          Express 앱을 지나 서버로 갈 때 <body>에 포함된게 campground라고 정렬됨.
+              콘텐츠를 그룹화 할 수 있는 좋은 방법.-->
+            <textarea
+              class="form-control"
+              type="text"
+              id="description"
+              name="campground[description]"
+              required
+            >
+            </textarea>
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+          <div class="mb-3">
+            <div class="form-file custom-file">
+              <input
+                type="file"
+                class="form-file-input"
+                id="image"
+                name="image"
+                multiple
+              />
+              <label class="form-file-label" for="image">
+                <span class="form-file-text custom-file-label"
+                  >Choose image(s)...</span
+                >
+                <span class="form-file-button">Browse</span>
+              </label>
+            </div>
+          </div>
+          <div class="div mb-3">
+            <button class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+        <a href="/campgrounds">All Campgrounds</a>
+      </div>
+    </div>
+  </div>
+</div>
